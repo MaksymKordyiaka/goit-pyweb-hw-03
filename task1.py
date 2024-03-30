@@ -8,16 +8,12 @@ def copy_file(source_file, dest_dir):
     shutil.copy(source_file, dest_dir)
 
 def process_directory(args):
-
     # Обробляє директорію рекурсивно і копіює файли до цільової директорії.
-
     source_dir, dest_dir = args
-
     for root, _, files in os.walk(source_dir):
         for file in files:
             source_file = os.path.join(root, file)
             extension = os.path.splitext(file)[1].lower()
-
             if extension:
                 dest_subdir = os.path.join(dest_dir, extension[1:])
                 os.makedirs(dest_subdir, exist_ok=True)
